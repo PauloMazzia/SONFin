@@ -68,7 +68,7 @@
     {% endif %}
     </div>
     <div class="columns">
-        <div class="column is-5">
+        <div class="column is-7">
             <div class="field">
                 <label class="label is-small"> E-Mail </label>
                 <span class="control has-icons-left">
@@ -78,54 +78,54 @@
                              name="email"
                              placeholder="Informe o e-mail"
                              value="{{ user.email }}"
-                             {% if shwAction == 'show' %} disabled {% endif %}>
+                              {% if shwAction == 'show' %} disabled {% endif %}>
                       <span class="icon is-small is-left">
                             <i class="fa fa-envelope-o fa-fw"></i>
                       </span>
                 </span>
             </div>
         </div>
-        <div class="column is-7">
+        <div class="column is-5">
             <div class="field">
                 <label class="label is-small"> Senha </label>
-                <div class="columns">
-                    <div class="column {% if shwAction == 'show' %} is-9 {% else %} is-10 {% endif %}">
-                        <span class="control has-icons-left">
-                            <input class="input is-small"
-                                    type="password"
-                                    id="pwdUser"
-                                    name="password"
-                                    placeholder="Informe a senha"
-                                    value="{{ user.last_name }}"
-                                    {% if shwAction == 'show' or user.id is not null %} disabled {% endif %}>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-key fa-fw"></i>
-                            </span>
+                <span class="control has-icons-left">
+                        <input class="input is-small"
+                               type="password"
+                               id="pwdUser"
+                               name="password"
+                               placeholder="Informe a senha"
+                               value="{{ user.last_name }}"
+                                {% if shwAction == 'show' or user.id is not null %} disabled {% endif %}>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-key fa-fw"></i>
                         </span>
-                    </div>
-                    <div class="column is-centered">
-                        {% if shwAction == 'show' %}
-                            <a href="{{ route('users.delete', {'id':user.id}) }}"
-                               class="button is-info is-outlined is-small">
-                                Excluir <i class="fa fa-fw fa-trash-o"></i>
-                            </a>
-                            <a href="{{ route('users.edit', {'id':user.id}) }}"
-                               class="button is-info is-outlined is-small">
-                                Editar <i class="fa fa-fw fa-pencil"></i>
-                            </a>
-                            <a href="{{ route('users.list') }}"
-                               class="button is-info is-outlined is-small">
-                                Cancelar <i class="fa fa-fw fa-table"></i>
-                            </a>
-                        {% else %}
-                            <!-- <div class="control"> -->
-                            <button class="button is-info is-outlined is-small controll">
-                                Gravar&nbsp;&nbsp;<i class="icon is-small fa fa-{{ submitIcon }} fa-fw"></i></button>
-                            <a href="{{ route('users.list') }}" class="button is-info is-outlined is-small">
-                                Cancelar&nbsp;&nbsp;<i class="icon is-small fa fa-table fa-fw"></i></a>
-                        {% endif %}
-                    </div>
-                </div>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column is-8">
+            &nbsp;
+        </div>
+        <div class="column">
+            <div class="level-right bd-structure-item" title="level-right">
+                {% if shwAction == 'show' %}
+                    <a href="{{ route('users.delete', {'id':user.id}) }}"
+                       class="button is-outlined is-small">
+                        Excluir <i class="fa fa-fw fa-trash-o"></i>
+                    </a>&nbsp;&nbsp;
+                    <a href="{{ route('users.edit', {'id':user.id}) }}"
+                       class="button is-outlined is-small">
+                        Editar <i class="fa fa-fw fa-pencil"></i>
+                    </a>&nbsp;&nbsp;
+                {% else %}
+                    <button class="button  is-outlined is-small controll">
+                        Gravar&nbsp;&nbsp;<i class="icon is-small fa fa-{{ submitIcon }} fa-fw"></i></button>&nbsp;&nbsp;
+                {% endif %}
+                <a href="{{ route('users.list') }}"
+                   class="button is-outlined is-small">
+                    Cancelar&nbsp;&nbsp;<i class="icon is-small fa fa-table fa-fw"></i>
+                </a>&nbsp;&nbsp;
 
             </div>
         </div>

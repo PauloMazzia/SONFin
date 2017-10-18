@@ -1,10 +1,23 @@
 <?php
 
-
 use Phinx\Seed\AbstractSeed;
 
 class CategoryCostsSeeder extends AbstractSeed
 {
+    const NAMES = [
+        'Telefone',
+        'Água',
+        'Escola',
+        'Cartão',
+        'LUZ',
+        'IPVA',
+        'Imposto de Renda',
+        'Gasolina',
+        'Vestuário',
+        'Entretenimento',
+        'Reparos'
+    ];
+
     /**
      * Run Method.
      *
@@ -15,38 +28,23 @@ class CategoryCostsSeeder extends AbstractSeed
      */
     public function run()
     {
-        $faker=\Faker\Factory::create('pt_BR');
+        $faker = \Faker\Factory::create('pt_BR');
+        $faker->addProvider($this);
         $categoryCosts = $this->table('category_costs');
-        $data=[];
-        foreach (range(1,10) as $value){
+        $data = [];
+        foreach (range(1, 20) as $value) {
             $data[] = [
-                'name' => $faker->company,
+                'name' => $faker->categoryName(),
+                'user_id' => rand(1,4),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
         }
         $categoryCosts->insert($data)->save();
     }
-}
 
-    /* ------------  VERSAO SEM FAKER  ------------ */
-    /*
-    public function run()
+    public function categoryName()
     {
-        $categoryCosts = $this->table('category_costs');
-        $categoryCosts->insert([
-            [
-                'name' => 'Cat Custo 1',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'name' => 'Cat Custo 2',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]
-        ])->save();
-    }*/
-
-
-
+        return \Faker\Provider\Base::randomElement(self::NAMES);
+    }
+}
