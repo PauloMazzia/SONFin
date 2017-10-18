@@ -37,4 +37,5 @@ $app->get('/home/{name}/{id}',function (ServerRequestInterface $request){
 require_once  __DIR__ . '/../src/Controllers/CategoryCosts.php';
 require_once  __DIR__ . '/../src/Controllers/users.php';
 require_once  __DIR__ . '/../src/Controllers/auth.php';
+
 $app->start();
