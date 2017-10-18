@@ -1,0 +1,73 @@
+<form method="post" action="{{ action }}">
+    {% if shwAction == 'show' %}
+    <div class="columns">
+        <div class="column is-1">
+            <div class="field">
+                <label class="label is-small"> # </label>
+                <span class="control has-icons-left">
+                      <input class="input is-small"
+                             type="text"
+                             id="idCategory"
+                             placeholder="Nome da categoria de custo"
+                             name="id"
+                             value="{{ category.id }}" disabled>
+                      <span class="icon is-small is-left">
+                            <i class="fa fa-hashtag fa-fw"></i>
+                      </span>
+                </span>
+            </div>
+        </div>
+        <div class="column is-11">
+    {% endif %}
+            <div class="field">
+                <label class="label is-small">Nome</label>
+                <div class="columns">
+                    <div class="column is-10">
+                    <span class="control has-icons-left">
+                          <input class="input is-small"
+                                 type="text"
+                                 id="nameCategory"
+                                 placeholder="Nome da categoria de custo"
+                                 name="name"
+                                 value="{{ category.name }}">
+                          <span class="icon is-small is-left">
+                            <i class="fa fa-tags fa-fw"></i>
+                          </span>
+                    </span>
+                    <span class="help">Informe o nome da categoria de custos a ser cadastrada</span>
+                    </div>
+                    <div class="column is-centered">
+                        {% if shwAction == 'show' %}
+                            <a href="{{ route('category-costs.delete', {'id':category.id}) }}"
+                               class="button is-info is-outlined is-small">
+                                Excluir <i class="fa fa-fw fa-trash-o"></i>
+                            </a>
+                            <a href="{{ route('category-costs.edit', {'id':category.id}) }}"
+                               class="button is-info is-outlined is-small">
+                                Editar <i class="fa fa-fw fa-pencil"></i>
+                            </a>
+                            <a href="{{ route('category-costs.list') }}"
+                               class="button is-info is-outlined is-small">
+                                Cancelar <i class="fa fa-fw fa-table"></i>
+                            </a>
+                        {% else %}
+                       <!-- <div class="control"> -->
+                            <button class="button is-info is-outlined is-small controll">
+                                Gravar&nbsp;&nbsp;<i class="icon is-small fa fa-{{ submitIcon }} fa-fw"></i></button>
+                            <a href="{{ route('category-costs.list') }}" class="button is-info is-outlined is-small">
+                                Cancelar&nbsp;&nbsp;<i class="icon is-small fa fa-table fa-fw"></i></a>
+                        {% endif %}
+                    </div>
+                    <!--<div class="column is-centered">
+                        <div class="control">
+                            <a href="{{ route('category-costs.list') }}" class="button is-info is-outlined is-small">
+                                Cancelar&nbsp;&nbsp;<i class="icon is-small fa fa-table fa-fw"></i></a>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+    {% if shwAction == 'show' %}
+        </div>
+    </div>
+    {% endif %}
+</form>

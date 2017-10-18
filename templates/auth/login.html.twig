@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PB Financas</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/da30b9a95d.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+</head>
+<section class="hero is-light is-large">
+    <div class="hero-head">
+
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <p class="title">
+                <i class="icon fa fa-leaf fa-4x fa-fw has-text-success"></i>
+            </p>
+            <p class="title">
+                PB Financas
+            </p>
+        </div>
+    </div>
+
+    <div class="hero-foot">
+        <nav class="navbar is-fullwidth">
+            <div class="navbar-start has-text-centered">
+                &nbsp;&nbsp;Versao 1.0 - Plano B Softwares
+            </div>
+            <form method="post" action="{{ route('auth.login') }}">
+                <div class="navbar-end">
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field is-expanded">
+                                <div class="field has-addons">
+                                    <p class="control">
+                                        <a class="button is-static  is-small">
+                                            Usuario
+                                        </a>
+                                    </p>
+                                    <p class="control is-expanded">
+                                        <input class="input is-small"
+                                               type="text" placeholder="Informe identidade"
+                                               name="email">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="field-body">
+                            <div class="field is-expanded">
+                                <div class="field has-addons">
+                                    <p class="control">
+                                        <a class="button is-static  is-small">
+                                            Senha
+                                        </a>
+                                    </p>
+                                    <p class="control is-expanded">
+                                        <input class="input is-small" type="password"
+                                               placeholder="Senha" name="password">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        &nbsp;&nbsp;
+                        <button class="button is-success is-outlined is-small" type="submit">
+                            Login &nbsp;&nbsp;<i class="icon fa fa-key fa-fw"></i>
+                        </button>&nbsp;&nbsp;
+                    </div>
+            </form>
+        </nav>
+    </div>
+</section>

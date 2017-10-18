@@ -1,0 +1,133 @@
+<form method="post" action="{{ action }}">
+    <div class="columns">
+    {% if shwAction == 'show' %}
+        <div class="column is-1">
+            <div class="field">
+                <label class="label is-small"> # </label>
+                <span class="control has-icons-left">
+                      <input class="input is-small"
+                             type="text"
+                             id="idUser"
+                             name="id"
+                             value="{{ user.id }}" disabled>
+                      <span class="icon is-small is-left">
+                            <i class="fa fa-hashtag fa-fw"></i>
+                      </span>
+                </span>
+            </div>
+        </div>
+        <div class="column is-11">
+            <div class="field">
+                <label class="label is-small"> Nome </label>
+                <span class="control has-icons-left">
+                      <input class="input is-small"
+                             type="text"
+                             id="nmUser"
+                             placeholder="Nome da categoria de custo"
+                             name="name"
+                             value="{{ user.first_name ~ user.last_name }}" disabled>
+                      <span class="icon is-small is-left">
+                            <i class="fa fa-fa-user-circle-o fa-fw"></i>
+                      </span>
+                </span>
+            </div>
+        </div>
+    {% else %}
+        <div class="column is-6">
+            <div class="field">
+                <label class="label is-small"> Nome </label>
+                <span class="control has-icons-left">
+                      <input class="input is-small"
+                             type="text"
+                             id="nameUser"
+                             name="first_name"
+                             placeholder="Informe o nome do Usuario"
+                             value="{{ user.first_name }}">
+                      <span class="icon is-small is-left">
+                            <i class="fa fa-user-circle-o fa-fw"></i>
+                      </span>
+                </span>
+            </div>
+        </div>
+        <div class="column is-6">
+            <div class="field">
+                <label class="label is-small"> Sobrenome </label>
+                <span class="control has-icons-left">
+                      <input class="input is-small"
+                             type="text"
+                             id="nickUser"
+                             name="last_name"
+                             placeholder="Informe o sobrenome do Usuario"
+                             value="{{ user.last_name }}">
+                      <span class="icon is-small is-left">
+                            <i class="fa fa-user-circle-o fa-fw"></i>
+                      </span>
+                </span>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+    <div class="columns">
+        <div class="column is-5">
+            <div class="field">
+                <label class="label is-small"> E-Mail </label>
+                <span class="control has-icons-left">
+                      <input class="input is-small"
+                             type="text"
+                             id="mailUser"
+                             name="email"
+                             placeholder="Informe o e-mail"
+                             value="{{ user.email }}"
+                             {% if shwAction == 'show' %} disabled {% endif %}>
+                      <span class="icon is-small is-left">
+                            <i class="fa fa-envelope-o fa-fw"></i>
+                      </span>
+                </span>
+            </div>
+        </div>
+        <div class="column is-7">
+            <div class="field">
+                <label class="label is-small"> Senha </label>
+                <div class="columns">
+                    <div class="column {% if shwAction == 'show' %} is-9 {% else %} is-10 {% endif %}">
+                        <span class="control has-icons-left">
+                            <input class="input is-small"
+                                    type="password"
+                                    id="pwdUser"
+                                    name="password"
+                                    placeholder="Informe a senha"
+                                    value="{{ user.last_name }}"
+                                    {% if shwAction == 'show' or user.id is not null %} disabled {% endif %}>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-key fa-fw"></i>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="column is-centered">
+                        {% if shwAction == 'show' %}
+                            <a href="{{ route('users.delete', {'id':user.id}) }}"
+                               class="button is-info is-outlined is-small">
+                                Excluir <i class="fa fa-fw fa-trash-o"></i>
+                            </a>
+                            <a href="{{ route('users.edit', {'id':user.id}) }}"
+                               class="button is-info is-outlined is-small">
+                                Editar <i class="fa fa-fw fa-pencil"></i>
+                            </a>
+                            <a href="{{ route('users.list') }}"
+                               class="button is-info is-outlined is-small">
+                                Cancelar <i class="fa fa-fw fa-table"></i>
+                            </a>
+                        {% else %}
+                            <!-- <div class="control"> -->
+                            <button class="button is-info is-outlined is-small controll">
+                                Gravar&nbsp;&nbsp;<i class="icon is-small fa fa-{{ submitIcon }} fa-fw"></i></button>
+                            <a href="{{ route('users.list') }}" class="button is-info is-outlined is-small">
+                                Cancelar&nbsp;&nbsp;<i class="icon is-small fa fa-table fa-fw"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

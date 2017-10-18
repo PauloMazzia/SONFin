@@ -1,0 +1,58 @@
+{% extends'layout.html.twig' %}
+
+{% block content %}
+
+    <br />
+    <div class="container is-fluid">
+    <div class="card">
+        <header class="card-header" style="background-color: #A4A4A4">
+            <p class="card-header-title is-size-7">
+                <i class="icon fa user-circle-o fa-fw"></i> Usuários
+            </p>
+            <a href="{{ route('users.new') }}" class="card-header-icon"
+               style="color: black" aria-label="more options"
+               data-balloon="Inclusão de novo usuário"
+               data-balloon-pos="down" data-balloon-length="medium">
+                <i class="fa fa-plus-square-o fa-fw icon" aria-hidden="true"></i>
+            </a>
+        </header>
+        <div class="card-content">
+            <div class="content">
+                Listagem
+
+                <table class="table is-narrow is-striped is-hoverable">
+                    <thead class="is-size-7">
+                    <tr>
+                        <th style="width: 30px" class="has-text-centered"> # </th>
+                        <th>Nome</th>
+                        <th>E-Mail</th>
+                        <th style="width: 120px" class="has-text-centered">A&ccedil;&atilde;o</th>
+                    </tr>
+                    </thead>
+                    <tbody class="is-size-7">
+                    {% for user in users %}
+                        <tr>
+                            <th scope="row">{{ user.id }}</th>
+                            <td>{{ user.first_name ~ ' ' ~ user.last_name}}</td>
+                            <td>{{ user.email }}</td>
+                            <td class="is-size-6 has-text-centered">
+                                <a class="icon has-text-info"
+                                   href="{{ route('users.edit',{'id':user.id}) }}"
+                                   data-balloon="Edição do cadastro do usuario {{  user.first_name ~ ' ' ~ user.last_name }}"
+                                   data-balloon-pos="down" data-balloon-length="medium">
+                                    <i class="fa fa-pencil fa-fw"></i></a>
+                                &nbsp;
+                                <a class="icon has-text-danger"
+                                   href="{{ route('users.show',{'id':user.id}) }}"
+                                   data-balloon="Detalhe do cadastro a ser excluído do usuario {{  user.first_name ~ ' ' ~ user.last_name }}"
+                                   data-balloon-pos="left" data-balloon-length="medium" >
+                                    <i class="fa fa-trash fa-fw"></i></a>
+                            </td
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

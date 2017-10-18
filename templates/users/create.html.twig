@@ -1,0 +1,24 @@
+{% extends'layout.html.twig' %}
+
+{% block content %}
+
+    <br />
+    <div class="container is-fluid">
+        <div class="card">
+            <header class="card-header" style="background-color: #A4A4A4">
+                <p class="card-header-title is-size-7">
+                    <i class="icon fa fa-user-circle-o fa-fw"></i> Usuários
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    Inclusão
+                    {% set action = route('users.store')%}
+                    {% set submitIcon = 'floppy-o' %}
+                    {% include 'users/_form.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

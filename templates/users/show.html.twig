@@ -1,0 +1,27 @@
+{% extends'layout.html.twig' %}
+
+{% block content %}
+
+    <br />
+    <div class="container is-fluid">
+        <div class="card">
+            <header class="card-header" style="background-color: #A4A4A4">
+                <p class="card-header-title is-size-7">
+                    <i class="icon fa fa-tags fa-fw"></i> Usuarios
+                </p>
+
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    Detalhe
+                    {% set action = route('users.update',{'id':user.id})%}
+                    {% set submitIcon = 'pencil' %}
+                    {% set shwAction = 'show' %}
+                    {% include 'users/_form.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

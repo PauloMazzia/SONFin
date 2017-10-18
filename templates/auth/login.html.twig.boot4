@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="card col-4">
+            <div class="card-body">
+                <h4 class="card-title"><span class="fa fa-user-circle-o fa-fw"></span> Identidade de Acesso </h4>
+                <form method="post" action="{{ route('auth.login') }}">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Login</label>
+                        <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon"><i class="fa fa-user fa-fw"></i></div>
+                            <input type="email" class="form-control"
+                                   id="exampleInputEmail1"
+                                   aria-describedby="emailHelp"
+                                   placeholder="Informe seu e-mail de Acesso"
+                                   name="email" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Senha</label>
+                        <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Informe a Senha">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-info pull-right"><i class="fa fa-unlock fa-fw"></i> Acessar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
