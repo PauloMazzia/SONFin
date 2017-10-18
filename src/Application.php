@@ -73,7 +73,7 @@ class Application
     protected function runBefores(): ?ResponseInterface
     {
         foreach ($this->befores as $callback) {
-            $result = $callback($this->service(ResponseInterface::class));
+            $result = $callback($this->service(RequestInterface::class));
             if($result instanceof ResponseInterface){
                 return $result;
             }
