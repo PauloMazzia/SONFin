@@ -20,7 +20,7 @@ class UsersSeeder extends AbstractSeed
             'updated_at'    => date('Y-m-d H:i:s')
         ])->save();
         $data = [];
-        foreach (range(1,5) as $value)
+        foreach (range(1,3) as $value)
         {
             $data[] = [
                 'first_name'  => $faker->firstName,

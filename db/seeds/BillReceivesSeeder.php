@@ -34,7 +34,7 @@ class BillReceivesSeeder extends AbstractSeed
                 'date_launch' => $faker->date(),
                 'name' => $faker->BillReceivesName(),
                 'value' => $faker->randomFloat(2, 10, 1000),
-                'user_id' => rand(1,6),
+                'user_id' => rand(1,4),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];

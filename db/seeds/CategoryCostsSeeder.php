@@ -32,7 +32,7 @@ class CategoryCostsSeeder extends AbstractSeed
         $faker->addProvider($this);
         $categoryCosts = $this->table('category_costs');
         $data = [];
-        foreach (range(1, 20) as $value) {
+        foreach (range(1, 200) as $value) {
             $data[] = [
                 'name' => $faker->categoryName(),
                 'user_id' => rand(1,4),
