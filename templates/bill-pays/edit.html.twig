@@ -1,0 +1,26 @@
+{% extends'layout.html.twig' %}
+
+{% block content %}
+
+    <br />
+    <div class="container is-fluid">
+        <div class="card">
+            <header class="card-header" style="background-color: #A4A4A4">
+                <p class="card-header-title is-size-7">
+                    <i class="icon fa fa-sign-out fa-fw"></i> Contas a Pagar
+                </p>
+
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    Edição
+                    {% set action = route('bill-pays.update',{'id':bill.id})%}
+                    {% set submitIcon = 'pencil' %}
+                    {% include 'bill-pays/_form.html.twig' %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

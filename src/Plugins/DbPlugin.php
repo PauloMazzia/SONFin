@@ -23,6 +23,7 @@ class DbPlugin implements PluginInterface
         $capsule->bootEloquent();
 
         $container->add('repository.factory', new RepositoryFactory());
+        
         $container->addLazy('category-costs.repository', function (ContainerInterface $container)
         {
            return $container->get('repository.factory')->factory(CategoryCost::class);
