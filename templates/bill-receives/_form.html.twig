@@ -1,0 +1,97 @@
+<form method="post" action="{{ action }}">
+    <div class="columns">
+        {% if shwAction == 'show' %}
+        <div class="column is-1">
+            <div class="field">
+                <label class="label is-small"> # </label>
+                <span class="control has-icons-left">
+                      <input class="input is-small"
+                             type="text"
+                             id="idBillReceive"
+                             placeholder="Nome da categoria de custo"
+                             name="id"
+                             value="{{ bill.id }}" disabled>
+                      <span class="icon is-small is-left">
+                            <i class="fa fa-hashtag fa-fw"></i>
+                      </span>
+                </span>
+            </div>
+        </div>
+        {% endif %}
+        <div class="column is-2">
+            <div class="field">
+                <label class="label is-small">Data Lancamento</label>
+                <span class="control has-icons-left">
+                      <input class="input is-small has-text-right"
+                             type="text"
+                             id="dateBillReceive"
+                             placeholder="Data Lancamento"
+                             name="date_launch"
+                             value="{{ bill.date_launch | date('d/m/Y') }}"
+                             {% if shwAction == 'show' %} disabled {% endif %}>
+                      <span class="icon is-small is-left">
+                            <i class="fa fa-calendar fa-fw"></i>
+                      </span>
+                </span>
+            </div>
+        </div>
+        <div class="column {% if shwAction == 'show' %} is-7 {% else %} is-8 {% endif %}">
+            <div class="field">
+                <label class="label is-small">Nome</label>
+                <span class="control has-icons-left">
+                      <input class="input is-small"
+                             type="text"
+                             id="nameBillReceive"
+                             placeholder="Nome da Receita"
+                             name="name"
+                             value="{{ bill.name }}"
+                             {% if shwAction == 'show' %} disabled {% endif %}>
+                      <span class="icon is-small is-left">
+                            <i class="fa fa-sign-in fa-fw"></i>
+                      </span>
+                </span>
+            </div>
+         </div>
+        <div class="column is-2">
+            <div class="field">
+                <label class="label is-small">Valor</label>
+                <span class="control has-icons-left">
+                          <input class="input is-small has-text-right"
+                                 type="text"
+                                 id="valueBillReceive"
+                                 placeholder="Valor Lancamento"
+                                 name="value"
+                                 value="{{ bill.value | number_format(2,',','.') }}"
+                                  {% if shwAction == 'show' %} disabled {% endif %}>
+                          <span class="icon is-small is-left">
+                                <i class="fa fa-money fa-fw"></i>
+                          </span>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+         <div class="column">
+             <div class="level-right bd-structure-item" title="level-right">
+                {% if shwAction == 'show' %}
+                    <a href="{{ route('bill-receives.delete', {'id':bill.id}) }}"
+                       class="button is-outlined is-small">
+                        Excluir <i class="fa fa-fw fa-trash-o"></i>
+                    </a>&nbsp;&nbsp;
+                    <a href="{{ route('bill-receives.edit', {'id':bill.id}) }}"
+                       class="button is-outlined is-small">
+                        Editar <i class="fa fa-fw fa-pencil"></i>
+                    </a>&nbsp;&nbsp;
+                {% else %}
+                    <button class="button is-outlined is-small controll">
+                        Gravar&nbsp;&nbsp;<i class="icon is-small fa fa-{{ submitIcon }} fa-fw"></i>
+                    </button>&nbsp;&nbsp;
+                {% endif %}
+                    <a href="{{ route('bill-receives.list') }}"
+                       class="button is-outlined is-small">
+                        Cancelar <i class="fa fa-fw fa-table"></i>
+                    </a>&nbsp;&nbsp;
+             </div>
+         </div>
+     </div>
+</form>

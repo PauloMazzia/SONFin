@@ -1,0 +1,55 @@
+{% extends'layout.html.twig' %}
+
+{% block content %}
+
+    <br />
+    <div class="container is-fluid">
+        <div class="card">
+            <header class="card-header" style="background-color: #A4A4A4">
+                <p class="card-header-title is-size-7">
+                   <i class="icon fa fa-sign-in fa-fw"></i> Contas a Receber
+                </p>
+                <a href="{{ route('bill-receives.new') }}" class="card-header-icon"
+                           style="color: black" aria-label="more options">
+                    <i class="fa fa-plus-square-o fa-fw icon" aria-hidden="true"></i>
+                </a>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                Listagem
+                    <table class="table is-narrow is-striped is-hoverable">
+                        <thead class="is-size-7">
+                        <tr>
+                            <th style="width: 30px" class="has-text-centered"> # </th>
+                            <th style="width: 90px">Data Lanc</th>
+                            <th>Nome</th>
+                            <th style="width: 90px;">Valor</th>
+                            <th style="width: 120px" class="has-text-centered">A&ccedil;&atilde;o</th>
+                        </tr>
+                        </thead>
+                        <tbody class="is-size-7">
+                        {% for bill in bills %}
+                        <tr>
+                            <th scope="row" class="has-text-centered">{{ bill.id }}</th>
+                            <td>{{ bill.date_launch | date('d/m/Y') }}</td>
+                            <td>{{ bill.name }}</td>
+                            <td class="has-text-right">{{ bill.value | number_format(2,',','.') }}</td>
+                            <td class="is-size-6 has-text-centered">
+                                <a class="icon has-text-info"
+                                   href="{{ route('bill-receives.edit',{'id':bill.id}) }}">
+                                   <i class="fa fa-pencil fa-fw"></i></a>
+                                &nbsp;
+                                <a class="icon has-text-danger"
+                                   href="{{ route('bill-receives.show',{'id':bill.id}) }}">
+                                   <i class="fa fa-trash fa-fw"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

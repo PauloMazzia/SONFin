@@ -7,6 +7,7 @@ namespace SONFin\Plugins;
 use Interop\Container\ContainerInterface;
 use SONFin\Models\CategoryCost;
 use SONFin\Models\User;
+use SONFin\Models\BillReceive;
 use SONFin\Repository\RepositoryFactory;
 use SONFin\ServiceContainerInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -28,6 +29,11 @@ class DbPlugin implements PluginInterface
         $container->addLazy('user.repository', function(ContainerInterface $container)
         {
            return $container->get('repository.factory')->factory(User::class);
+        });
+
+        $container->addLazy('bill-receives.repository', function (ContainerInterface $container)
+        {
+            return $container->get('repository.factory')->factory(BillReceive::class);
         });
     }
 }

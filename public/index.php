@@ -12,6 +12,7 @@ use SONFin\ServiceContainer;
 //use Zend\Diactoros\Response;
 
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../src/helpers.php';
 
 $serviceContainer = new ServiceContainer();
 $app = new Application($serviceContainer);
@@ -37,5 +38,6 @@ $app->get('/home/{name}/{id}',function (ServerRequestInterface $request){
 require_once  __DIR__ . '/../src/Controllers/CategoryCosts.php';
 require_once  __DIR__ . '/../src/Controllers/users.php';
 require_once  __DIR__ . '/../src/Controllers/auth.php';
+require_once  __DIR__ . '/../src/Controllers/BillReceives.php';
 
 $app->start();
