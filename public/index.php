@@ -40,5 +40,6 @@ require_once  __DIR__ . '/../src/Controllers/users.php';
 require_once  __DIR__ . '/../src/Controllers/auth.php';
 require_once  __DIR__ . '/../src/Controllers/BillReceives.php';
 require_once  __DIR__ . '/../src/Controllers/BillPays.php';
+require_once  __DIR__ . '/../src/Controllers/Statements.php';
 
 $app->start();

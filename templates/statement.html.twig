@@ -1,0 +1,60 @@
+{% extends'layout.html.twig' %}
+
+{% block content %}
+
+    <br />
+    <div class="container is-fluid">
+        <div class="card">
+            <header class="card-header" style="background-color: #A4A4A4">
+                <p class="card-header-title is-size-7">
+                   <i class="icon fa fa-list-alt fa-fw"></i> Extrato
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <form method="post" action="">
+                        <div class="columns">
+                            <div class="column is-9"></div>
+                            <div class="column is-1">
+                                <div class="field">
+                                    <span class="control has-icons-left">
+                                          <input class="input is-small"
+                                                 type="text"
+                                                 placeholder="DD/MM/YYYY"
+                                                 name="date_start"
+                                                 value="{{ 'now'|date_modify('-1 month')|date('d/m/Y') }}">
+                                          <span class="icon is-small is-left">
+                                                <i class="fa fa-calendar fa-fw"></i>
+                                          </span>
+                                    </span>
+                                    <span class="help"><strong>Data Inicial</strong></span>
+                                </div>
+                            </div>
+                            <div class="column is-1">
+                                <div class="field">
+                                    <span class="control has-icons-left">
+                                          <input class="input is-small"
+                                                 type="text"
+                                                 placeholder="DD/MM/YYYY"
+                                                 name="date_end"
+                                                 value="{{ 'now'|date('d/m/Y') }}">
+                                          <span class="icon is-small is-left">
+                                                <i class="fa fa-calendar fa-fw"></i>
+                                          </span>
+                                    </span>
+                                    <span class="help"><strong>Data Final</strong></span>
+                                </div>
+                            </div>
+                            <div class="column is-1 is-centered has-text-centered">
+                                <button class="button is-outlined is-small">
+                                    Buscar &nbsp;&nbsp;<i class="icon fa fa-calendar-check-o fa-fw"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
