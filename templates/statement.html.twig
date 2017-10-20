@@ -52,9 +52,102 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <!-- Extrato -->
+
+                    <div class="container is-fluid">
+                        <h5>Totais no Período</h5>
+                        <div class="notification is-size-6">
+                            <div class="columns is-mobile">
+                                <div class="column is-4">
+                                    <div class="field">
+                                        <label class="label is-small">Pagos</label>
+                                        <div class="control has-icons-left">
+                                            <input class="input is-danger is-small"
+                                                   type="text"
+                                                   value="R$ {{ statements.total_pays|number_format(2,',','.') }}"
+                                                   style="border-bottom: 1px red solid;
+                                                          border-top: none;
+                                                          border-left: none;
+                                                          border-right: none"
+                                                   readonly >
+                                            <span class="icon is-small is-left has-text-danger">
+                                                <i class="fa fa-sign-out fa-fw"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column is-4">
+                                    <div class="field">
+                                        <label class="label is-small">Recebidos</label>
+                                        <div class="control has-icons-left">
+                                            <input class="input is-info is-small"
+                                                   type="text"
+                                                   value="R$ {{ statements.total_receives|number_format(2,',','.') }}"
+                                                   style="border-bottom: 1px blue solid;
+                                                          border-top: none;
+                                                          border-left: none;
+                                                          border-right: none"
+                                                   readonly >
+                                            <span class="icon is-small is-left has-text-info">
+                                                <i class="fa fa-sign-in fa-fw"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column is-4">
+                                    <div class="field">
+                                        <label class="label is-small">Total</label>
+                                        <div class="control has-icons-left">
+                                            <input class="input is-small
+                                                          {{ (statements.total_receives - statements.total_pays) >= 0 ? ' is-success' : ' is-danger'}}"
+                                                   type="text"
+                                                   value="R$ {{ (statements.total_receives - statements.total_pays)|number_format(2,',','.') }}"
+                                                   style="border-bottom: 1px solid
+                                                            {{ (statements.total_receives - statements.total_pays) >= 0 ? ' blue' : ' red'}};
+                                                          border-top: none;
+                                                          border-left: none;
+                                                          border-right: none"
+                                                   readonly >
+                                            <span class="icon is-small is-left
+                                                         {{ (statements.total_receives - statements.total_pays) >= 0 ? ' has-text-info' : ' has-text-danger'}}">
+                                                <i class="fa
+                                                         {{ (statements.total_receives - statements.total_pays) >= 0 ? ' fa-sign-in' : ' fa-sign-out'}} fa-fw"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  <!-- Columns -->
+                        </div>      <!-- Notification -->
+                    </div>          <!-- Container -->
+                    <br />
+                    <table class="table is-narrow is-striped is-hoverable is-size-7">
+                        <thead>
+                        <tr>
+                            <th style="width: 100px">Data</th>
+                            <th>Descricao</th>
+                            <th style="width: 150px">Valor</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for statement in statements.statements %}
+                            {% set isBillPay = statement.category_name is not null %}
+                            <tr>
+                                <td> {{ statement.date_launch|date('d/m/Y') }}</td>
+                                <td>
+                                    {% if isBillPay %}
+                                    {{ statement.category_name }} - Comp:
+                                    {% endif %}{{ statement.name }}
+                                </td>
+                                <td class="{{ isBillPay?'has-text-left':'has-text-right' }}
+                                           {{ isBillPay?' has-text-danger':'' }}"> R$ {{ statement.value|number_format(2,',','.') }}</td>
+                             </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <!-- Extrato -->
+                </div>  <!-- Content -->
+            </div>      <!-- Card Content -->
+        </div>          <!-- Card -->
+    </div>              <!-- Container -->
 
 {% endblock %}
