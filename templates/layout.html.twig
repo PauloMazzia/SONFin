@@ -11,7 +11,18 @@
     <link rel="stylesheet" href="/assets/css/font-awesome.css">
     <link rel="stylesheet" href="/assets/css/bulma.css">
     <link rel="stylesheet" href="/assets/css/baloon.css">
-    <script rel="script" href="/assets/css/jquery-3.2.1.js"></script>
+    <script>
+        function formatar(mascara, documento){
+            var i = documento.value.length;
+            var saida = mascara.substring(0,1);
+            var texto = mascara.substring(i)
+
+            if (texto.substring(0,1) != saida){
+                documento.value += texto.substring(0,1);
+            }
+
+        }
+    </script>
 </head>
 <body>
 {% if Auth.check() %}
@@ -185,5 +196,8 @@
 <br />
 {% endif %}
 {% block content %}{% endblock %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% block scripts %}{% endblock %}
 </body>
 </html>

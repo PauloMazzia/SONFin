@@ -30,7 +30,9 @@
                              {%  if shwAction != 'new' %}
                              value="{{ bill.date_launch | date('d/m/Y') }}"
                              {% endif %}
-                             {% if shwAction == 'show' %} disabled {% endif %}>
+                             {% if shwAction == 'show' %} disabled {% endif %}
+                             OnKeyPress="formatar('##/##/####', this)"
+                             maxlength="10">
                       <span class="icon is-small is-left">
                             <i class="fa fa-calendar fa-fw"></i>
                       </span>
@@ -98,7 +100,8 @@
                                  placeholder="Valor Lancamento"
                                  name="value"
                                  value="{{ bill.value | number_format(2,',','.') }}"
-                                  {% if shwAction == 'show' %} disabled {% endif %}>
+                                  {% if shwAction == 'show' %} disabled {% endif %}
+                                 OnKeyPress="formatar('###.###.###.###,##', this)">
                           <span class="icon is-small is-left">
                                 <i class="fa fa-money fa-fw"></i>
                           </span>

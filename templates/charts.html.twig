@@ -1,0 +1,52 @@
+{% extends'layout.html.twig' %}
+
+{% block content %}
+
+    <br />
+    <div class="container is-fluid">
+        <div class="card">
+            <header class="card-header" style="background-color: #A4A4A4">
+                <p class="card-header-title is-size-7">
+                   <i class="icon fa fa-sign-out fa-fw"></i> Contas a Pagar
+                </p>
+                <a href="{{ route('bill-pays.new') }}" class="card-header-icon"
+                           style="color: black" aria-label="more options">
+                    <i class="fa fa-plus-square-o fa-fw icon" aria-hidden="true"></i>
+                </a>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                Gráfico de Gastos
+                    <div id="chart-div"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart']})
+        //Google Visualization API
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Categoria');
+            data.addColumn('number', 'Valor Gasto');
+            data.addRows([
+                {% for category in categories %}
+                ['{{ category.name }}',{{ category.value|number_format(2,'.','') }}],
+                {% endfor %}
+            ]);
+
+            var chart = new google.visualization.BarChart(document.getElementById('chart-div'));
+            chart.draw(data, {
+                width: '100%',
+                height: 300
+            });
+        }
+    </script>
+{% endblock %}
