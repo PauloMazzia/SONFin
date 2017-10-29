@@ -10,6 +10,7 @@ class UsersSeeder extends AbstractSeed
         $app = require __DIR__ . '/../bootstrap.php';
         $auth = $app->service('auth');
         $faker = Factory::create('pt_BR');
+        /**--
         $users = $this->table('users');
         $users->insert([
             'first_name'    => 'Paulo',
@@ -19,6 +20,7 @@ class UsersSeeder extends AbstractSeed
             'created_at'    => date('Y-m-d H:i:s'),
             'updated_at'    => date('Y-m-d H:i:s')
         ])->save();
+         */
         $data = [];
         foreach (range(1,3) as $value)
         {
