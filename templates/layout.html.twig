@@ -28,8 +28,9 @@
 {% if Auth.check() %}
 <nav class="navbar is-dark is-size-7">
     <div class="navbar-brand">
-        <a class="navbar-item" href="http://bulma.io">
-            <i class="icon fa fa-leaf fa-fw" style="color: green;"></i> PB Finan
+        <a class="navbar-item" href="http://www.mazzia.com.br" target="_blank">
+            <i class="icon fa fa-leaf fa-fw fa-lg fa-2x" style="color: green;"></i>
+            &nbsp;&nbsp;PB Finan
         </a>
 
         <div class="navbar-burger burger" data-target="navMenuTransparentExample">
@@ -41,128 +42,45 @@
 
     <div id="navMenuTransparentExample" class="navbar-menu">
         <div class="navbar-start">
-            <div class="navbar-item">
-                <i class="icon fa fa-home fa-fw"></i>
-            </div>
+            <a class="navbar-item" href="{{ route('users.list') }}">
+                <span class="icon">
+                    <i class="fa fa-users"></i>
+                </span>
+            </a>
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link  is-active" href="/documentation/overview/start/">
-                    Menu 01
+                <a class="navbar-link">
+                    Lançamentos
                 </a>
                 <div class="navbar-dropdown is-boxed">
-                    <a class="navbar-item " href="/documentation/overview/start/">
-                        Sub 01
-                    </a>
-                    <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
-                        Sub 02
-                    </a>
-                    <a class="navbar-item " href="http://bulma.io/documentation/columns/basics/">
-                        Sub 03
-                    </a>
-                    <a class="navbar-item " href="http://bulma.io/documentation/layout/container/">
-                        Sub 04
-                    </a>
-                    <a class="navbar-item " href="http://bulma.io/documentation/form/general/">
-                        Sub 05
-                    </a>
-                    <a class="navbar-item " href="http://bulma.io/documentation/elements/box/">
-                        Sub 06
-                    </a>
-                    <a class="navbar-item " href="http://bulma.io/documentation/elements/box/">
-                        Sub 06
+                    <a class="navbar-item " href="{{ route('bill-receives.list') }}">
+                        <i class="icon fa fa-sign-in fa-fw"></i> Contas a Receber
                     </a>
                     <hr class="navbar-divider">
-                    <div class="navbar-item">
-                        <div>
-                            <p class="is-size-6-desktop">
-                                <strong>0.6.0</strong>
-                            </p>
-
-                            <small>
-                                <a class="bd-view-all-versions" href="http://versions.bulma.io/">View all versions</a>
-                            </small>
-
-                        </div>
-                    </div>
+                    <a class="navbar-item " href="{{ route('bill-pays.list') }}">
+                        <i class="icon fa fa-sign-out fa-fw"></i> Contas a Pagar
+                    </a>
                 </div>
             </div>
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link " href="http://bulma.io/blog/">
-                    Menu 02
+                <a class="navbar-link">
+                    Tabelas
                 </a>
-                <div id="blogDropdown" class="navbar-dropdown is-boxed" data-style="width: 18rem;">
-
-                    <a class="navbar-item" href="/2017/10/09/roses-are-red-links-are-blue/">
-                        <div class="navbar-content">
-                            <p>
-                                <small class="has-text-link">09 Oct 2017</small>
-                            </p>
-                            <p>Roses are red – Links are blue</p>
-                        </div>
+                <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item " href="{{ route('category-costs.list') }}">
+                        <i class="icon fa fa-tags fa-fw"></i> Categ Custos
                     </a>
-
-                    <a class="navbar-item" href="/2017/08/03/list-of-tags/">
-                        <div class="navbar-content">
-                            <p>
-                                <small class="has-text-link">03 Aug 2017</small>
-                            </p>
-                            <p>New feature: list of tags</p>
-                        </div>
-                    </a>
-
-                    <a class="navbar-item" href="/2017/08/01/bulma-bootstrap-comparison/">
-                        <div class="navbar-content">
-                            <p>
-                                <small class="has-text-link">01 Aug 2017</small>
-                            </p>
-                            <p>Bulma / Bootstrap comparison</p>
-                        </div>
-                    </a>
-
-                    <a class="navbar-item" href="http://bulma.io/blog/">
-                        More posts
-                    </a>
-                    <hr class="navbar-divider">
-                    <div class="navbar-item">
-                        <div class="navbar-content">
-                            <div class="level is-mobile">
-                                <div class="level-left">
-                                    <div class="level-item">
-                                        <strong>Stay up to date!</strong>
-                                    </div>
-                                </div>
-                                <div class="level-right">
-                                    <div class="level-item">
-                                        <a class="button bd-is-rss is-small" href="http://bulma.io/atom.xml">
-                      <span class="icon is-small">
-                        <i class="fa fa-rss"></i>
-                      </span>
-                                            <span>Subscribe</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="navbar-item has-dropdown is-hoverable">
-                <div class="navbar-link">
-                    Menu 03
-                </div>
-                <div id="moreDropdown" class="navbar-dropdown is-boxed">
-                    <a class="navbar-item " href="http://bulma.io/made-with-bulma/">
-                        <p>
-                            <strong>Made with Bulma</strong>
-                            <br>
-                            <small>The official community badge</small>
-                        </p>
+                <a class="navbar-link">
+                    Consultas
+                </a>
+                <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item " href="{{ route('charts.list') }}">
+                        <i class="icon fa fa-tags fa-fw"></i> Categ Custos
                     </a>
-                    <a class="navbar-item " href="http://bulma.io/extensions/">
-                        <p>
-                            <strong>Extensions</strong>
-                            <br>
-                            <small>Side projects to enhance Bulma</small>
-                        </p>
+                    <a class="navbar-item " href="{{ route('statement.list') }}">
+                        <i class="icon fa fa-list-alt fa-fw"></i> Extrato
                     </a>
                 </div>
             </div>

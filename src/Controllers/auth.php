@@ -16,7 +16,7 @@ $app
         if(!$result){
             return $view->render('auth/login.html.twig');
         }
-        return $app->route('category-costs.list');
+        return $app->route('statement.list');
     }, 'auth.login')
 
     ->get('/logout', function (ServerRequestInterface $request) use($app){
