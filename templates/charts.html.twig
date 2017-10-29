@@ -9,15 +9,51 @@
                 <p class="card-header-title is-size-7">
                    <i class="icon fa fa-sign-out fa-fw"></i> Contas a Pagar
                 </p>
-                <a href="{{ route('bill-pays.new') }}" class="card-header-icon"
-                           style="color: black" aria-label="more options">
-                    <i class="fa fa-plus-square-o fa-fw icon" aria-hidden="true"></i>
-                </a>
             </header>
             <div class="card-content">
                 <div class="content">
-                Gráfico de Gastos
-                    <div id="chart-div"></div>
+                    <h4>Gráfico de Gastos</h4> <small>( Periodo {{ datStart | date('d/m/Y') }} - {{ datEnd | date('d/m/Y') }} )</small>
+                    <form method="get" action="{{ route('charts.list') }}">
+                        <div class="columns">
+                            <div class="column is-9"></div>
+                            <div class="column is-1">
+                                <div class="field">
+                                    <span class="control has-icons-left">
+                                          <input class="input is-small"
+                                                 type="text"
+                                                 placeholder="DD/MM/YYYY"
+                                                 name="date_start"
+                                                 value="{{ 'now'|date_modify('-1 month')|date('d/m/Y') }}">
+                                          <span class="icon is-small is-left">
+                                                <i class="fa fa-calendar fa-fw"></i>
+                                          </span>
+                                    </span>
+                                    <span class="help"><strong>Data Inicial</strong></span>
+                                </div>
+                            </div>
+                            <div class="column is-1">
+                                <div class="field">
+                                    <span class="control has-icons-left">
+                                          <input class="input is-small"
+                                                 type="text"
+                                                 placeholder="DD/MM/YYYY"
+                                                 name="date_end"
+                                                 value="{{ 'now'|date('d/m/Y') }}">
+                                          <span class="icon is-small is-left">
+                                                <i class="fa fa-calendar fa-fw"></i>
+                                          </span>
+                                    </span>
+                                    <span class="help"><strong>Data Final</strong></span>
+                                </div>
+                            </div>
+                            <div class="column is-1 is-centered has-text-centered">
+                                <button class="button is-outlined is-small">
+                                    Buscar &nbsp;&nbsp;<i class="icon fa fa-calendar-check-o fa-fw"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="chart-div" style="width: 900px; height: 500px;"></div>
                 </div>
             </div>
         </div>
@@ -42,10 +78,16 @@
                 {% endfor %}
             ]);
 
-            var chart = new google.visualization.BarChart(document.getElementById('chart-div'));
-            chart.draw(data, {
+            var options ={
+              // title: 'Gastos por Categoria',
+              // is3D: true,
+              pieHole: 0.5
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chart-div'));
+            chart.draw(data, options, {
                 width: '100%',
-                height: 300
+                height: 500
             });
         }
     </script>

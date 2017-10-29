@@ -22,7 +22,9 @@ $app
        $categories = $repository->sumByPeriod($dateStart, $dateEnd, $auth->user()->getId());
 
        return $view->render('charts.html.twig', [
-           'categories' => $categories
+           'categories' => $categories,
+               'datStart' => $dateStart,
+               'datEnd'   => $dateEnd
            ]
        );
 
