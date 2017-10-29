@@ -328,7 +328,7 @@ class CategoryCostRepository extends DefaultRepository implements CategoryCostRe
      *
      * This method MUST return a UriInterface instance.
      *
-     * @link http://tools.ietf.org/html/rfc3986#section-4.3
+     * @link   http://tools.ietf.org/html/rfc3986#section-4.3
      * @return UriInterface Returns a UriInterface instance
      *     representing the URI of the request.
      */
@@ -369,6 +369,8 @@ class CategoryCostRepository extends DefaultRepository implements CategoryCostRe
      *
      * @return static
      */
-    public function withUri(UriInterface $uri, $preserveHost = false) {
- // TODO: Implement withUri() method.
-}}
+    public function withUri(UriInterface $uri, $preserveHost = false) 
+    {
+        // TODO: Implement withUri() method.
+    }
+}

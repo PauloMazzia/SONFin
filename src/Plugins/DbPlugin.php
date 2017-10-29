@@ -26,29 +26,34 @@ class DbPlugin implements PluginInterface
 
         $container->add('repository.factory', new RepositoryFactory());
         
-        $container->addLazy('category-costs.repository', function ()
-        {
-           return new CategoryCostRepository();
-        });
-        $container->addLazy('user.repository', function(ContainerInterface $container)
-        {
-           return $container->get('repository.factory')->factory(User::class);
-        });
+        $container->addLazy(
+            'category-costs.repository', function () {
+                return new CategoryCostRepository();
+            }
+        );
+        $container->addLazy(
+            'user.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(User::class);
+            }
+        );
 
-        $container->addLazy('bill-receives.repository', function (ContainerInterface $container)
-        {
-            return $container->get('repository.factory')->factory(BillReceive::class);
-        });
+        $container->addLazy(
+            'bill-receives.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(BillReceive::class);
+            }
+        );
 
-        $container->addLazy('bill-pays.repository', function (ContainerInterface $container)
-        {
-            return $container->get('repository.factory')->factory(BillPay::class);
-        });
+        $container->addLazy(
+            'bill-pays.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(BillPay::class);
+            }
+        );
 
-        $container->addLazy('statement.repository', function()
-        {
-            return new StatementRepository();
-        });
+        $container->addLazy(
+            'statement.repository', function () {
+                return new StatementRepository();
+            }
+        );
 
     }
 }

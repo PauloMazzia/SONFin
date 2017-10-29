@@ -22,7 +22,7 @@ class Auth implements AuthInterface
     public function login(array $credentials): bool
     {
         list('email' => $email, 'password'=>$password) = $credentials;
-        return$this->jasnyAuth->login($email,$password) !== null;
+        return$this->jasnyAuth->login($email, $password) !== null;
     }
 
     public function check(): bool
@@ -42,13 +42,12 @@ class Auth implements AuthInterface
 
     public function hashPassword(string $password): string
     {
-       return $this->jasnyAuth->hashPassword($password);
+        return $this->jasnyAuth->hashPassword($password);
     }
 
     protected  function sessionStart()
     {
-        if(session_status() == PHP_SESSION_NONE)
-        {
+        if(session_status() == PHP_SESSION_NONE) {
             session_start();
         }
     }

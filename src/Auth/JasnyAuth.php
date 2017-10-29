@@ -29,7 +29,7 @@ class JasnyAuth extends Auth
     /**
      * Fetch a user by username
      *
-     * @param string $username
+     * @param  string $username
      * @return User|null
      */
     public function fetchUserByUsername($username)
