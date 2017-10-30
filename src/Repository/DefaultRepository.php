@@ -51,7 +51,7 @@ class DefaultRepository implements RepositoryInterface
 
     protected function findInternal($id)
     {
-        return is_array($id) ? $this->findOneBy($id) : $this->find($id);
+        return is_array($id) ? $this->findOneBy($id) : $this->find((int) $id);
     }
 
     public function findByField(string $field, $value)

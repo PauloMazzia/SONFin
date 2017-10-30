@@ -61,7 +61,7 @@ $app
                 $view = $app->service('view.renderer');
                 $id = $request->getAttribute('id');
                 $repository = $app->service('user.repository');
-                $user = $repository->find($id);
+                $user = $repository->find((int)$id);
                 return $view->render(
                     'users/show.html.twig', [
                     'user' => $user
